@@ -95,7 +95,7 @@ class Animate(BasePlugin.BasePlugin):
         try:
             leds = Lightpack.GetCountLeds()
             map = [n for n in range (1, leds+1)]
-        except Exception, e:
+        except Exception as e:
             self.log(str(e))
             map = [1,2,3,4,5,6,7,8,9,10]
         return map
@@ -112,7 +112,7 @@ class Animate(BasePlugin.BasePlugin):
             map = Lightpack.GetSettingMain('Animate/LedsMap')
             self.ledMap = [int(n) for n in map.split(',')]
             self.log(str(self.ledMap))
-        except Exception, e:
+        except Exception as e:
             self.log(str(e))
             self.ledMap = self.defaultMap()     
 
@@ -128,7 +128,7 @@ class Animate(BasePlugin.BasePlugin):
                 self.lastFrame[self.ledMap[k]-1]=QColor(r,g,b)
             Lightpack.SetFrame(self.sessionKey, self.lastFrame)
             self.i += 1
-        except Exception, e:
+        except Exception as e:
             self.log(str(e))
 
     def Animation2(self):
@@ -152,7 +152,7 @@ class Animate(BasePlugin.BasePlugin):
             Lightpack.SetFrame(self.sessionKey, newFrame)
             self.lastFrame = newFrame
             self.i += 1
-        except Exception, e:
+        except Exception as e:
             self.log(str(e))
 
     def SnakeAnimation(self):
